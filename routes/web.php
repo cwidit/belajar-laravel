@@ -1,11 +1,14 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LatihanController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('latihan', [LatihanController::class, 'index']);
 Route::get('tambah', [LatihanController::class, 'tambah'])->name('tambah');
@@ -20,3 +23,22 @@ Route::post('action-tambah', [LatihanController::class, 'actionTambah'])->name('
 Route::post('action-kurang', [LatihanController::class, 'actionKurang'])->name('action-kurang');
 Route::post('action-kali', [LatihanController::class, 'actionKali'])->name('action-kali');
 Route::post('action-bagi', [LatihanController::class, 'actionBagi'])->name('action-bagi');
+
+//Profiles
+Route::get('profile',[ProfileController::class, 'index']);
+
+//Login
+Route::get('/', [LoginController::class, 'index'])->name('login');
+
+route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
+route::post('action-logout', [LoginController::class, 'actionLogout'])->name('action-logout');
+
+//Dashboard 'prevent-back'
+Route::middleware(['auth'])->group(function (){
+    Route::get('dashboard', function (){
+        return view('dashboard.index');
+    });
+    //resource : GET, POST, PUT, DELETE
+    Route::resource('user', \App\Http\Controllers\UserController::class);
+    Route::resource('role', \App\Http\Controllers\RoleController::class);
+});

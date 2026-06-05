@@ -1,12 +1,6 @@
 <laravel-boost-guidelines>
 === foundation rules ===
 
-# Architecture
-1. Laravel 13
-2. Livewire
-3. Clean code
-4. Layered (repository, service, controller)
-
 # Laravel Boost Guidelines
 
 The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
