@@ -30,7 +30,7 @@
                         <span class="badge text-white bg-danger">Inactive</span>
                         @endif
                     </td>
-                    
+
                     <td>
                         <a href="{{ route('role.edit', $role->id) }}" class="btn btn-success icon">
                             <i class="bi bi-pencil"></i>

@@ -118,7 +118,14 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="sidebar-item active ">
+                            <a href="{{ route('locker.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Locker Management</span>
+                            </a>
+                        </li>
 
+                        <li class="sidebar-title">Menu</li>
                         <li class="sidebar-title">Forms &amp; Tables</li>
 
                         <li class="sidebar-item  has-sub">

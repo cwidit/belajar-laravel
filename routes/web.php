@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LatihanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LockerController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -41,4 +42,5 @@ Route::middleware(['auth'])->group(function (){
     //resource : GET, POST, PUT, DELETE
     Route::resource('user', \App\Http\Controllers\UserController::class);
     Route::resource('role', \App\Http\Controllers\RoleController::class);
+    Route::resource('locker', LockerController::class);
 });
