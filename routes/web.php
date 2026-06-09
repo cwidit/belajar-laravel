@@ -43,4 +43,8 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('user', \App\Http\Controllers\UserController::class);
     Route::resource('role', \App\Http\Controllers\RoleController::class);
     Route::resource('locker', LockerController::class);
+    Route::resource('major', \App\Http\Controllers\MajorController::class);
+    Route::resource('key', \App\Http\Controllers\KeyController::class);
+    Route::resource('student', \App\Http\Controllers\StudentController::class);
+
 });

@@ -118,10 +118,29 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item">
                             <a href="{{ route('locker.index') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-archive-fill"></i>
                                 <span>Locker Management</span>
+                            </a>
+                        </li>
+                         <li class="sidebar-item">
+                            <a href="{{ route('major.index') }}" class='sidebar-link'>
+                                <i class="bi bi-journal-bookmark"></i>
+                                <span>Major Management</span>
+                            </a>
+                        </li>
+
+                         <li class="sidebar-item">
+                            <a href="{{ route('key.index') }}" class='sidebar-link'>
+                                <i class="bi bi-door-closed-fill"></i>
+                                <span>Key Management</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('student.index') }}" class='sidebar-link'>
+                                <i class="bi bi-emoji-laughing"></i>
+                                <span>Student</span>
                             </a>
                         </li>
 

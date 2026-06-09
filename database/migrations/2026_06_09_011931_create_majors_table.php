@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('majors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('locker_id')->references('id')->on('lockers')->onDelete('cascade');
-            $table->string('member_name', 55);
-            $table->dataTime('borrowdate');
-            $table->dateTime('borrow_end_date');
+            $table->string('name');
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('majors');
     }
 };
