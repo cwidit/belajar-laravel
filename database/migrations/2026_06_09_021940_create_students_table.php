@@ -11,13 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('major_id')->references('id')->on('majors')->onDelete('cascade');
-            $table->string('name');
-            $table->string('phone')->nullable();
-            $table->timestamps();
-        });
+       Schema::create('students', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('user_id')
+        ->constrained()
+        ->onDelete('cascade');
+    $table->foreignId('major_id')
+        ->constrained()
+        ->onDelete('cascade');
+    $table->string('name');
+    $table->string('phone')->nullable();
+    $table->timestamps();
+});
     }
 
     /**

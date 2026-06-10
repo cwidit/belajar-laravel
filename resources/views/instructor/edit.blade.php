@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Student Management')
+@section('title', 'Instructor Management')
 
 @section('content')
     <div class="card">
@@ -7,7 +7,7 @@
             <h3 class="card-title">{{ $title ?? '' }}</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('student.update', $edit->id) }}" method="post">
+            <form action="{{ route('instructor.update', $edit->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

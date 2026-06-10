@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Models;
-use App\Models\Major;
+
 use Illuminate\Database\Eloquent\Model;
 
-
-class Student extends Model
+class Instructor extends Model
 {
-    protected $fillable=[
+     protected $fillable=[
         'major_id',
         'name',
         'phone',

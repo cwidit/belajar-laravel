@@ -25,75 +25,19 @@
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Components</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Alert</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-badge.html">Badge</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-breadcrumb.html">Breadcrumb</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-button.html">Button</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-card.html">Card</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-carousel.html">Carousel</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-dropdown.html">Dropdown</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-list-group.html">List Group</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-modal.html">Modal</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-navs.html">Navs</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-pagination.html">Pagination</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-progress.html">Progress</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-spinner.html">Spinner</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-tooltip.html">Tooltip</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
                                 <i class="bi bi-collection-fill"></i>
-                                <span>Extra Components</span>
+                                <span>Master Data</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="extra-component-avatar.html">Avatar</a>
+                                    <a href="{{ route('key.index') }}">Key </a>
+
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="extra-component-sweetalert.html">Sweet Alert</a>
+                                    <a href="{{ route('major.index') }}">Major </a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="extra-component-toastify.html">Toastify</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="extra-component-rating.html">Rating</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="extra-component-divider.html">Divider</a>
+                                    <a href="{{ route('locker.index') }}">Locker </a>
                                 </li>
                             </ul>
                         </li>
@@ -118,66 +62,28 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('locker.index') }}" class='sidebar-link'>
-                                <i class="bi bi-archive-fill"></i>
-                                <span>Locker Management</span>
-                            </a>
-                        </li>
-                         <li class="sidebar-item">
-                            <a href="{{ route('major.index') }}" class='sidebar-link'>
-                                <i class="bi bi-journal-bookmark"></i>
-                                <span>Major Management</span>
-                            </a>
-                        </li>
 
-                         <li class="sidebar-item">
-                            <a href="{{ route('key.index') }}" class='sidebar-link'>
-                                <i class="bi bi-door-closed-fill"></i>
-                                <span>Key Management</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('student.index') }}" class='sidebar-link'>
-                                <i class="bi bi-emoji-laughing"></i>
-                                <span>Student</span>
-                            </a>
-                        </li>
+                       
 
                         <li class="sidebar-title">Menu</li>
                         <li class="sidebar-title">Forms &amp; Tables</li>
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-hexagon-fill"></i>
-                                <span>Form Elements</span>
+                                <i class="bi bi-emoji-laughing"></i>
+                                <span>Student Management</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="form-element-input.html">Input</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-input-group.html">Input Group</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-select.html">Select</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-radio.html">Radio</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-checkbox.html">Checkbox</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-textarea.html">Textarea</a>
+                                    <a href="{{ route('student.index') }}">Student</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
+                            <a href="{{ route('instructor.index') }}" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Form Layout</span>
+                                <span>Instructor</span>
                             </a>
                         </li>
 
