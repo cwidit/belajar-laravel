@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use App\Models\Major;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Hash;
 
 
 class InstructorController extends Controller
@@ -20,7 +22,7 @@ class InstructorController extends Controller
         //$users = User::orderBy('id', 'desc')->get();
         // kalau pakai latest (desc) dan oldest (asc) maka
         //$users = User::latest()->get();
-        $instructors = Instructor::with('major')->orderByDesc('id')->get();
+        $instructors = Instructor::with(['major', 'user'])->orderByDesc('id')->get();
         $title = "Instructor Management";
         return view('instructor.index', compact('instructors', 'title'));
     }
@@ -39,19 +41,32 @@ class InstructorController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //insert into user () value ()
-        $validate = $request->validate([
+{
+    $request->validate([
+        'major_id' => 'required',
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required',
+        'phone' => 'nullable',
+    ]);
 
-        'major_id'=>'required',
-        'name'=>'required',
-        'phone'=>'nullable'
-        ]);
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
 
-        Instructor::create($request->all());
-        Alert::success('Success!!', 'Create instructor Success');
-        return redirect()->to('instructor');
-    }
+    Instructor::create([
+        'major_id' => $request->major_id,
+        'name' => $request->name,
+        'phone' => $request->phone,
+        'user_id' => $user->id,
+    ]);
+
+    Alert::success('Success!!', 'Create instructor Success');
+
+    return redirect()->route('instructor.index');
+}
 
     /**
      * Display the specified resource.
@@ -114,16 +129,17 @@ class InstructorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Instructor $instructor) //ditambahin instructor disini kalau misal ada 2 id yg mau dihapus
-    {
-        try {
-            $instructor->user()->delete();
-            Alert::success('Success!', 'Delete instructor success');
-            return redirect()->to('instructor');
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            Alert::error('Fail!!', $th->getMessage());
-            return back();
+   public function destroy(Instructor $instructor)
+{
+    try {
+        $instructor->user()->delete(); // hapus user
+        $instructor->delete();         // hapus instructor
+
+        Alert::success('Success!', 'Delete instructor success');
+        return redirect()->route('instructor.index');
+    } catch (\Throwable $th) {
+        Alert::error('Fail!!', $th->getMessage());
+        return back();
     }
 }
 }

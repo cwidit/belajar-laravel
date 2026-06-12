@@ -60,12 +60,12 @@
                                 <li class="submenu-item ">
                                     <a href="{{ route('role.create') }}">Create Role</a>
                                 </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ route('menu.index') }}">Menu</a>
+                                </li>
                             </ul>
                         </li>
 
-                       
-
-                        <li class="sidebar-title">Menu</li>
                         <li class="sidebar-title">Forms &amp; Tables</li>
 
                         <li class="sidebar-item  has-sub">

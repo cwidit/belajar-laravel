@@ -26,7 +26,7 @@ Route::post('action-kali', [LatihanController::class, 'actionKali'])->name('acti
 Route::post('action-bagi', [LatihanController::class, 'actionBagi'])->name('action-bagi');
 
 //Profiles
-Route::get('profile',[ProfileController::class, 'index']);
+Route::get('profile', [ProfileController::class, 'index']);
 
 //Login
 Route::get('/', [LoginController::class, 'index'])->name('login');
@@ -35,10 +35,11 @@ route::post('action-login', [LoginController::class, 'actionLogin'])->name('acti
 route::post('action-logout', [LoginController::class, 'actionLogout'])->name('action-logout');
 
 //Dashboard 'prevent-back'
-Route::middleware(['auth'])->group(function (){
-    Route::get('dashboard', function (){
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', function () {
         return view('dashboard.index');
     });
+    Route::resource('menu', \App\Http\Controllers\MenuController::class);
     //resource : GET, POST, PUT, DELETE
     Route::resource('user', \App\Http\Controllers\UserController::class);
     Route::resource('role', \App\Http\Controllers\RoleController::class);
@@ -47,5 +48,5 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('key', \App\Http\Controllers\KeyController::class);
     Route::resource('student', \App\Http\Controllers\StudentController::class);
     Route::resource('instructor', \App\Http\Controllers\InstructorController::class);
-
+    Route::resource('user-role', \App\Http\Controllers\UserRoleController::class);
 });

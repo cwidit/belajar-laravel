@@ -3,25 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
-use App\Models\Menu;
+use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
-class RoleController extends Controller
+class UserRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // kalau pakai select * from users
-        //$users = User::orderBy('id', 'desc')->get();
-        // kalau pakai latest (desc) dan oldest (asc) maka
-        //$users = User::latest()->get();
-        $roles = Role::orderByDesc('id')->get();
-        $title = "Role Management";
-        return view('role.index', compact('roles', 'title'));
+
+        $userRoles = USerRole::with('user', 'role')->orderByDesc('id')->get(); //manggil objek misal nama dan role nya apa base on id
+        $title = "User Role Management";
+        return view('user-role.index', compact('userRoles', 'title'));
     }
 
     /**
@@ -29,8 +27,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $title = "Create New Role";
-        return view('role.create', compact ('title'));
+        $users = User::get();
+        $roles = Role::get();
+        $title = "Create New User Role";
+        return view('user-role.create', compact ('title','users','roles'));
     }
 
     /**
@@ -40,13 +40,13 @@ class RoleController extends Controller
     {
         //insert into user () value ()
         $validate = $request->validate([
-            'name'=>'required',
-            'is_active'=>'required'
+            'user_id'=>'required',
+            'role_id'=>'required'
         ]);
 
-        Role::create($request->all());
-        Alert::success('Success!!', 'Create role success');
-        return redirect()->to('role');
+        UserRole::create($request->all());
+        Alert::success('Success!!', 'Create User Role Success');
+        return redirect()->to('user-role');
     }
 
     /**
@@ -64,9 +64,8 @@ class RoleController extends Controller
     {
         $title = "Edit Role";
         $edit = Role::find($id); //blank
-        $parents =Menu::with('children')->whereNull('parent_id')->where('is_active',1)->orderBy('sort_order')->get();
         //$edit = User::findOrFail($id); 404
-        return view('role.edit', compact('title', 'edit','parents'));
+        return view('role.edit', compact('title', 'edit'));
     }
 
     /**
