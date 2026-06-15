@@ -36,8 +36,16 @@ class UserController extends Controller
     public function create()
     {
         $title = 'Create New User';
+        // klo latest utk data terakhir, trs pakai first klo utk ambil 1 data tapi klo semua data berarti pakai get
+        $lastUser = User::latest()->first();
+        // $number=$lastUser ? substr($lastUser->code, 3)+1:1;
+        //code : user001
+
+        $userCode="USR" . str_pad($lastUser->id + 1, 3, "0", STR_PAD_LEFT);
+
+
         $roles = Role::get();
-        return view('user.create', compact('title', 'roles'));
+        return view('user.create', compact('title', 'roles', 'userCode'));
     }
 
     /**
@@ -131,4 +139,6 @@ class UserController extends Controller
         Alert::success('Delete', 'Success Delete User!!');
         return redirect()->to('user');
     }
+
+
 }

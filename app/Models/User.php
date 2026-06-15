@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id'
+        
     ];
 
     public function profiles(){
@@ -37,7 +37,7 @@ class User extends Authenticatable
         {
             return $this->belongsToMany(Role::class,'user_roles');
         }
-    
+
 
     /**
      * The attributes that should be hidden for serialization.

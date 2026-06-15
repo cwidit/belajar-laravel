@@ -9,6 +9,10 @@
         <div class="card-body">
             <form action="{{ route('user.store') }}" method="post">
                 @csrf
+                 <div class="mb-3">
+                    <label for="">Code *</label>
+                    <input type="text" class="form-control" placeholder="Enter your Name" name="code" value="{{ $userCode }}" readonly>
+                </div>
                 <div class="mb-3">
                     <label for="">Name *</label>
                     <input type="text" class="form-control" placeholder="Enter your Name" name="name" required>
